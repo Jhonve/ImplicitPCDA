@@ -10,7 +10,7 @@ def label_processing(label_path, label_id):
 
     if label_max == 255: # is rendered synthetic label
         label = label[:, :, 0]
-        foreground_mask = (label == label_id + 1) # there are 88 models in total, reduce rasterization error
+        foreground_mask = (label == label_id + 1)
         background_mask = 1 - foreground_mask
     else:
         label = cv2.imread(label_path, cv2.IMREAD_GRAYSCALE)
@@ -279,3 +279,8 @@ def self_nearest_distances_K(x, k=3):
     nearest_distance = torch.sqrt(torch.mean(k_nearest_distance, dim=2, keepdim=True))
 
     return nearest_distance
+
+def write_pc(point_cloud, output_path):
+    point_cloud_o3d = o3d.geometry.PointCloud()
+    point_cloud_o3d.points = o3d.utilit.Vector3dVector(point_cloud)
+    o3d.io.write_point_cloud(output_path, point_cloud_o3d)
