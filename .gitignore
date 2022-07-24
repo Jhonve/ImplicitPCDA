@@ -130,3 +130,6 @@ dmypy.json
 
 # folders
 .vscode/
+
+# os file system
+.DS_Store
