@@ -3,13 +3,9 @@ import os
 import cv2
 import h5py
 import numpy as np
-import open3d as o3d
-import scipy.io as sio
 from scipy.spatial.transform import Rotation
 
-import torch.utils.data as data
-
-from utils.utils import get_camera_parameters, jitter_pointcloud, lable_cropping, label_processing, pc_preprocessing, scale_to_unit_cube, rotate_pc, random_rotate_one_axis, jitter_pointcloud_adaptive, write_pc
+from utils.utils import get_camera_parameters, label_processing, scale_to_unit_cube, write_pc
 from libs.fps.fps_utils import farthest_point_sampling
 
 k_classes_pointdan = ['bathtub', 'bed', 'bookshelf', 'cabinet', 'chair', 'lamp', 'monitor', 'plant', 'sofa', 'table']
@@ -227,3 +223,24 @@ def filtered_GraspNet_fake(data_path, write_path, real_data_path, mode='/kinect'
                 # np.save(output_pose_path, rot_quat)
 
     print('For synthetic data, camera %s, %s stage, get %d point clouds'%(mode, phase, all_files_count))
+
+def datapath_PointDAN_synthetic(datapath, folder_list, is_train):
+    all_file_list = []
+    for i in range(len(folder_list)):
+        pc_list = os.listdir(datapath + folder_list[i] + '/train/')
+        for j in range(len(pc_list)):
+            file_npy = datapath + folder_list[i] + '/train/' + pc_list[j]
+            file_label = folder_list[i]
+            file_int_label = k_classes_pointdan.index(file_label)
+            all_file_list.append(file_npy + '|' + str(file_int_label))
+    
+    return all_file_list
+
+def datapath_prepare(opt):
+    if opt.dataset == 'PointDAN':
+        folder_list_fake = os.listdir(opt.datapath_fake)
+        print('Number of fake classes: ', len(folder_list_fake))
+
+        files_path_fake = datapath_PointDAN_synthetic(opt.datapath_fake, folder_list_fake, opt.is_train)
+        print('Number of fake data: ', len(files_path_fake))
+        saveH5(files_path_fake, opt.datapath_h5, opt.datapath_file_fake.split('/')[-1])

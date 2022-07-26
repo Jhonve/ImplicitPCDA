@@ -3,7 +3,12 @@ We provide our PyTorch implementation of our paper ['Domain Adaptation on Point 
 
 Here we show point clouds from different domains in an image.
 
-<img src="Imgs/PCD.png" width="800px"/>
+<img src="imgs/PCD.png" width="800px"/>
+
+## Domain Alignment
+Class-wise MMD for the task: ModelNet to ScanNet in PointDA-10 dataset. Diagonal shows source-target distances of the same class. Upper and lower triangular matrices indicate distances between different classes in the source and target domain, respectively. Our method maintains class-wise distances well.
+
+<img src="imgs/DomainMeasurement.png" width="800px"/>
 
 We will release our code soon! If you have any questions, please feel free to contact me!
 

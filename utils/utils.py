@@ -232,8 +232,8 @@ def jitter_pointcloud_adaptive(pointcloud):
     min_distances_expdim = np.expand_dims(min_distances, axis=1)
     min_distances_expdim = np.repeat(min_distances_expdim, C, axis=1)
 
-    # pointcloud += np.clip(min_distances_expdim * np.random.randn(N, C), -1*min_distances_expdim, min_distances_expdim) # normal sampling
-    pointcloud += np.clip(min_distances_expdim * (np.random.rand(N, C) * 2. - 1.), -1*min_distances_expdim, min_distances_expdim) # uniform sampling
+    # pointcloud += np.clip(min_distances_expdim * np.random.randn(N, C), -1 * min_distances_expdim, min_distances_expdim) # normal sampling
+    pointcloud += np.clip(min_distances_expdim * (np.random.rand(N, C) * 2. - 1.), -1 * min_distances_expdim, min_distances_expdim) # uniform sampling
     return pointcloud.astype('float32')
 
 def pc_preprocessing(pc):

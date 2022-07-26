@@ -21,36 +21,25 @@ class BaseOptions():
     def initialize(self, parser):
         """Define the common options that are used in both training and test."""
         # basic parameters
-        parser.add_argument('--name', type=str, default='Test', help='name of the experiment. It decides where to store samples and models')
-        # parser.add_argument('--name', type=str, default='Debug', help='name of the experiment. It decides where to store samples and models')
+        parser.add_argument('--name', type=str, default='Debug', help='name of the experiment. It decides where to store samples and models')
         parser.add_argument('--gpu_ids', type=str, default='0,1,2,3', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
         parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
 
         # dataset parameters
         parser.add_argument('--model', type=str, default='implicit', help='chooses which model to use.')
-        parser.add_argument('--dataset', type=str, default='FilteredGraspNet', choices=['GraspNet', 'FilteredGraspNet', 'Linemod', 'PointDAN', 'PointDANSynthetic'], help='choose whihc dataset to train.')
-        parser.add_argument('--datapath_prepared', type=bool, default=True, help='Wherether to generate depth path file.')
+        parser.add_argument('--dataset', type=str, default='PointDAN', choices=['GraspNet', 'PointDAN', 'PointDANSynthetic'], help='choose whihc dataset to train.')
+        parser.add_argument('--datapath_prepared', type=bool, default=False, help='Wherether to generate depth path file.')
         parser.add_argument('--num_class', type=int, default=10, help='...')
         parser.add_argument('--points_num', type=int, default=1024, help='...')
         parser.add_argument('--num_threads', default=8, type=int, help='# threads for loading data')
         parser.add_argument('--batch_size', type=int, default=64, help='input batch size')
         parser.add_argument('--rotation_augmentation', type=bool, default=True, help='whether to use dataset augmentation by random rotation')
         # datapath parameters 
-        parser.add_argument('--datapath_fake', type=str, default='../../Dataset/GraspNet/SyntheticTrain/', help='Path to Synthetic dataset')
-        parser.add_argument('--datapath_real', type=str, default='../../Dataset/GraspNet/TestImages/', help='Path to Real-scan dataset')
-        # parser.add_argument('--datapath_fake', type=str, default='../../Dataset/PointDANData/modelnet/', help='Path to Synthetic dataset')
-        # parser.add_argument('--datapath_real', type=str, default='../../Dataset/PointDANData/scannet/', help='Path to Real-scan dataset')
+        parser.add_argument('--datapath_fake', type=str, default='../../Dataset/PointDANData/modelnet/', help='Path to Synthetic dataset')
+        parser.add_argument('--datapath_real', type=str, default='../../Dataset/PointDANData/scannet/', help='Path to Real-scan dataset')
         parser.add_argument('--datapath_h5', type=str, default='./datasets/', help='Path to h5 file for saving data pathes')
-        parser.add_argument('--datapath_file_fake', type=str, default='./datasets/FilteredGraspNetDataPathRealTest.h5', help='H5 file saved clean data path')
-        parser.add_argument('--datapath_file_real', type=str, default='./datasets/FilteredGraspNetDataPathRealTest.h5', help='H5 file saved noise data path')
-        # parser.add_argument('--datapath_file_fake', type=str, default='./datasets/GraspNetDataPathFake.h5', help='H5 file saved clean data path')
-        # parser.add_argument('--datapath_file_real', type=str, default='./datasets/GraspNetDataPathReal.h5', help='H5 file saved noise data path')
-        parser.add_argument('--datapath_file_fake_test', type=str, default='./datasets/GraspNetDataPathFakeTest.h5', help='H5 file saved clean test data path')
-        parser.add_argument('--datapath_file_real_test', type=str, default='./datasets/GraspNetDataPathRealTest.h5', help='H5 file saved noise test data path')
-        # parser.add_argument('--datapath_file_fake', type=str, default='./datasets/PointDANDataPathFakeModelNet.h5', help='H5 file saved clean data path')
+        parser.add_argument('--datapath_file_fake', type=str, default='./datasets/PointDANDataPathFakeModelNet.h5', help='H5 file saved clean data path')
         # parser.add_argument('--datapath_file_real', type=str, default='./datasets/PointDANDataPathFakeShapeNet.h5', help='H5 file saved noise data path')
-        # parser.add_argument('--datapath_file_fake_test', type=str, default='./datasets/PointDANDataPathFakeTestModelNet.h5', help='H5 file saved clean test data path')
-        # parser.add_argument('--datapath_file_real_test', type=str, default='./datasets/PointDANDataPathRealTest.h5', help='H5 file saved noise test data path')
 
         # network parameters
         parser.add_argument('--input_nc', type=int, default=3, help='...')
