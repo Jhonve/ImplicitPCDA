@@ -37,3 +37,6 @@ So far, this repo only includes the self-supervised pre-training part. As for do
 I will keep update this repo.
 
 *Waiting for updating...*
+
+### Acknowledgements
+Part of this implementations is based on [DGCNN](https://github.com/WangYueFt/dgcnn). We also thank [Synchronized-BatchNorm-PyTorch](https://github.com/Jhonve/DCL-DepthSynthesis) for synchronized batchnorm implementation.
