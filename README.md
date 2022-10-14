@@ -32,4 +32,8 @@ If you find this useful for your research, please cite the following paper.
 }
 ```
 
+### Note that
+So far, this repo only includes the self-supervised pre-training part. As for domain adaptation, my suggestion is to use [GAST](https://github.com/zou-longkun/GAST) which is a sufficient codebase for benchmark comparisons.
+I will keep update this repo.
+
 *Waiting for updating...*
