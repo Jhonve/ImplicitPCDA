@@ -135,23 +135,6 @@ def filtered_GraspNet_real(data_path, write_path, fake_data_path=None, mode='Kin
                 output_pc_path = os.path.join(write_path, mode, str(i_obj), scene_name + '_' + frame_name + '.xyz')
                 write_pc(dense_points, output_pc_path)
 
-                # # write pose
-                # poses_file = data_path + folder_name + 'meta/' + frame_idx + '.mat'
-                # poses_mat = sio.loadmat(poses_file)
-                # obj_idxs = poses_mat['cls_indexes']
-                # obj_idxs = np.reshape(obj_idxs, -1)
-                # obj_id = np.where(obj_idxs == int(objs_list[i_obj]) + 1)
-                
-                # poses = poses_mat['poses']
-                # obj_pose = poses[:, :, obj_id[0][0]]
-                # obj_pose = np.reshape(obj_pose, (3, 4))
-                # rot_mat = obj_pose[:, :3]
-                # rot = Rotation.from_matrix(rot_mat)
-                # rot_quat = rot.as_quat()
-
-                # output_pose_path = os.path.join(write_path, mode, str(i_obj), scene_name + '_' + frame_name + '.npy')
-                # np.save(output_pose_path, rot_quat)
-
     print('For real-scan data, camera %s, %s stage, get %d point clouds'%(mode, phase, all_files_count))
 
 def filtered_GraspNet_fake(data_path, write_path, real_data_path, mode='/kinect', phase='train', depth_scale=1000):
@@ -203,24 +186,6 @@ def filtered_GraspNet_fake(data_path, write_path, real_data_path, mode='/kinect'
                 frame_name = frame_idx
                 output_pc_path = os.path.join(write_path, mode, str(i_obj), scene_name + '_' + frame_name + '.xyz')
                 write_pc(dense_points, output_pc_path)
-
-                # # write pose
-                # poses_file = real_data_path + 'scene_' + str(scenes_list[i_obj][j_scene]).zfill(4) + mode + '/'\
-                #              + 'meta/' + frame_idx + '.mat'
-                # poses_mat = sio.loadmat(poses_file)
-                # obj_idxs = poses_mat['cls_indexes']
-                # obj_idxs = np.reshape(obj_idxs, -1)
-                # obj_id = np.where(obj_idxs == int(objs_list[i_obj]) + 1)
-                
-                # poses = poses_mat['poses']
-                # obj_pose = poses[:, :, obj_id[0][0]]
-                # obj_pose = np.reshape(obj_pose, (3, 4))
-                # rot_mat = obj_pose[:, :3]
-                # rot = Rotation.from_matrix(rot_mat)
-                # rot_quat = rot.as_quat()
-
-                # output_pose_path = os.path.join(write_path, mode, str(i_obj), scene_name + '_' + frame_name + '.npy')
-                # np.save(output_pose_path, rot_quat)
 
     print('For synthetic data, camera %s, %s stage, get %d point clouds'%(mode, phase, all_files_count))
 

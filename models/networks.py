@@ -417,7 +417,7 @@ class SA_Layer(nn.Module):
         x = x + x_r
         return x
 
-def define_IMP_encoder(input_nc, output_nc, netE, is_TAM=False, init_type='normal', init_gain=0.02, gpu_ids=[]):
+def define_IMP_encoder(input_nc, output_nc, netE, init_type='normal', init_gain=0.02, gpu_ids=[]):
     if netE == 'dgcnn':
         net = DGCNN(input_nc, output_nc)
     elif netE == 'pct_simply':

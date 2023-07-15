@@ -27,7 +27,7 @@ class BaseOptions():
 
         # dataset parameters
         parser.add_argument('--model', type=str, default='implicit', help='chooses which model to use.')
-        parser.add_argument('--dataset', type=str, default='PointDAN', choices=['GraspNet', 'PointDAN', 'PointDANSynthetic'], help='choose whihc dataset to train.')
+        parser.add_argument('--dataset', type=str, default='GraspNet', choices=['GraspNet', 'PointDAN', 'PointDANSynthetic'], help='choose whihc dataset to train.')
         parser.add_argument('--datapath_prepared', type=bool, default=False, help='Wherether to generate depth path file.')
         parser.add_argument('--num_class', type=int, default=10, help='...')
         parser.add_argument('--points_num', type=int, default=1024, help='...')
@@ -35,8 +35,8 @@ class BaseOptions():
         parser.add_argument('--batch_size', type=int, default=64, help='input batch size')
         parser.add_argument('--rotation_augmentation', type=bool, default=True, help='whether to use dataset augmentation by random rotation')
         # datapath parameters 
-        parser.add_argument('--datapath_fake', type=str, default='../../Dataset/PointDANData/modelnet/', help='Path to Synthetic dataset')
-        parser.add_argument('--datapath_real', type=str, default='../../Dataset/PointDANData/scannet/', help='Path to Real-scan dataset')
+        parser.add_argument('--datapath_fake', type=str, default='../Dataset/PointDANData/modelnet/', help='Path to Synthetic dataset')
+        parser.add_argument('--datapath_real', type=str, default='../Dataset/PointDANData/scannet/', help='Path to Real-scan dataset')
         parser.add_argument('--datapath_h5', type=str, default='./datasets/', help='Path to h5 file for saving data pathes')
         parser.add_argument('--datapath_file_fake', type=str, default='./datasets/PointDANDataPathFakeModelNet.h5', help='H5 file saved clean data path')
         # parser.add_argument('--datapath_file_real', type=str, default='./datasets/PointDANDataPathFakeShapeNet.h5', help='H5 file saved noise data path')
@@ -49,7 +49,7 @@ class BaseOptions():
         parser.add_argument('--init_gain', type=float, default=0.02, help='scaling factor for normal, xavier and orthogonal.')
         parser.add_argument('--is_sync_norm', type=bool, default=True, help='...')
         # point cloud parameters
-        parser.add_argument('--camera_mode', type=str, default='Realsense', help='Kinect or Realsense')
+        parser.add_argument('--camera_mode', type=str, default='realsense', help='kinect or realsense')
         parser.add_argument('--depth_scale', type=int, default=1000, help='...')
 
         # additional parameters

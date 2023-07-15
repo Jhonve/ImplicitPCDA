@@ -130,6 +130,11 @@ dmypy.json
 
 # folders
 .vscode/
+checkpoints/
+runs/
 
 # os file system
 .DS_Store
+
+# log files
+*.h5

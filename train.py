@@ -102,8 +102,8 @@ if __name__ == '__main__':
     if not os.path.exists(opt.checkpoints_dir + '/' + opt.name):
         os.makedirs(opt.checkpoints_dir + '/' + opt.name)
 
-    train_dataset_A = GraspNetSynthetictPointClouds('../../Dataset/GraspNetPointClouds/', 'train')
-    train_dataset_B = GraspNetRealPointClouds('../../Dataset/GraspNetPointClouds/', 'train')
+    train_dataset_A = GraspNetSynthetictPointClouds('../Dataset/GraspNetPointClouds/', 'train')
+    train_dataset_B = GraspNetRealPointClouds('../Dataset/GraspNetPointClouds/', opt.camera_mode, 'train')
     train_dataloader_A = train_dataset_A.get_data_loader(opt.batch_size, opt.num_threads, drop_last=True, shuffle=True)
     train_dataloader_B = train_dataset_B.get_data_loader(opt.batch_size, opt.num_threads, drop_last=True, shuffle=True)
     
