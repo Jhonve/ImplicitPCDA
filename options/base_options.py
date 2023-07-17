@@ -37,6 +37,7 @@ class BaseOptions():
         # datapath parameters 
         parser.add_argument('--datapath_fake', type=str, default='../Dataset/PointDANData/modelnet/', help='Path to Synthetic dataset')
         parser.add_argument('--datapath_real', type=str, default='../Dataset/PointDANData/scannet/', help='Path to Real-scan dataset')
+        parser.add_argument('--datapath_graspnet', type=str, default='../Dataset/GraspNetPointClouds/', help='Path to GraspNetPC dataset')
         parser.add_argument('--datapath_h5', type=str, default='./datasets/', help='Path to h5 file for saving data pathes')
         parser.add_argument('--datapath_file_fake', type=str, default='./datasets/PointDANDataPathFakeModelNet.h5', help='H5 file saved clean data path')
         # parser.add_argument('--datapath_file_real', type=str, default='./datasets/PointDANDataPathFakeShapeNet.h5', help='H5 file saved noise data path')

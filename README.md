@@ -3,14 +3,12 @@ We provide our PyTorch implementation of our paper ['Domain Adaptation on Point 
 
 Here we show point clouds from different domains in an image.
 
-<img src="imgs/PCD.png" width="800px"/>
+<img src="imgs/PCD.png" width="100%"/>
 
 ## Domain Alignment
 Class-wise MMD for the task: ModelNet to ScanNet in PointDA-10 dataset. Diagonal shows source-target distances of the same class. Upper and lower triangular matrices indicate distances between different classes in the source and target domain, respectively. Our method maintains class-wise distances well.
 
-<img src="imgs/DomainMeasurement.png" width="800px"/>
-
-We will release our code soon! If you have any questions, please feel free to contact me!
+<img src="imgs/DomainMeasurement.png" width="100%"/>
 
 ### Dataset Preprocessing
 For generating point clouds from [GraspNet](https://graspnet.net/), we need to render depth maps firstly. Refer to my repo [ObjsDepthRender](https://github.com/Jhonve/ObjsDepthRender) for more information.
@@ -18,7 +16,28 @@ For generating point clouds from [GraspNet](https://graspnet.net/), we need to r
 ### GraspNetPC-10
 From [Google Drive Link](https://drive.google.com/file/d/1VVHmsSToFMVccge-LsYJW67IS94rNxWR/view?usp=sharing).
 
-### Citation
+## Usage
+### Environment
+- Python > 3.7
+- CUDA > 10.0
+
+### Dependencies
+We suggest installing torch manually, depending on the python and CUDA versions.
+```
+pip install -r requirements.txt
+```
+### Train implicits
+```
+python train.py --name $EXP_NAME --datapath_graspnet $PATH_TO_GRASPNETPC
+```
+
+## Acknowledgements
+Part of this implementations is based on [DGCNN](https://github.com/WangYueFt/dgcnn). We also thank [Synchronized-BatchNorm-PyTorch](https://github.com/Jhonve/DCL-DepthSynthesis) for synchronized batchnorm implementation.
+
+### Note that
+So far, this repo only includes the self-supervised pre-training part. As for domain adaptation, my suggestion is to use [GAST](https://github.com/zou-longkun/GAST) which is a sufficient codebase for benchmark comparisons.
+
+## Citation
 If you find this useful for your research, please cite the following paper.
 
 ```latex
@@ -31,12 +50,3 @@ If you find this useful for your research, please cite the following paper.
     pages     = {7223-7232}
 }
 ```
-
-### Note that
-So far, this repo only includes the self-supervised pre-training part. As for domain adaptation, my suggestion is to use [GAST](https://github.com/zou-longkun/GAST) which is a sufficient codebase for benchmark comparisons.
-I will keep update this repo.
-
-*Waiting for updating...*
-
-### Acknowledgements
-Part of this implementations is based on [DGCNN](https://github.com/WangYueFt/dgcnn). We also thank [Synchronized-BatchNorm-PyTorch](https://github.com/Jhonve/DCL-DepthSynthesis) for synchronized batchnorm implementation.
